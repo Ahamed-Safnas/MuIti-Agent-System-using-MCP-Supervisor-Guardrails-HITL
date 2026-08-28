@@ -1,129 +1,853 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07090e">
+  <meta name="description"
+    content="TripMate AI — Luxury multi-agent travel orchestration. Intelligent itineraries crafted with LangGraph, MCP, Groq, and Human-in-the-Loop precision.">
+  <title>TripMate AI — Luxury Autonomous Travel Companion</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Typography: Playfair Display + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
-    <title>TripMate AI</title>
-
-    <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
 
-    <div class="page-bg">
-        <div class="gradient-circle circle-1"></div>
-        <div class="gradient-circle circle-2"></div>
-        <div class="gradient-circle circle-3"></div>
+  <!-- ── Atmospheric Background Layer ─────────────────── -->
+  <div class="page-bg" aria-hidden="true">
+    <div class="bg-gradient-mesh"></div>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+    <div class="grain-overlay"></div>
+    <div class="subtle-grid"></div>
+  </div>
+
+  <!-- ── Navigation Bar ──────────────────────────────── -->
+  <header class="navbar" id="topNavbar">
+    <div class="nav-container">
+      <a class="brand" href="#" aria-label="TripMate AI Home">
+        <div class="brand-badge">
+          <svg class="brand-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" fill-opacity="0.2"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">TRIPMATE<span class="brand-accent">.AI</span></span>
+          <span class="brand-tag">AUTONOMOUS TRAVEL COMPANION</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#aiCompanionTeaser" class="nav-link">AI Companion</a>
+        <a href="#planner" class="nav-link">Agent Cockpit</a>
+        <a href="#discover" class="nav-link">Destinations</a>
+        <a href="#howItWorks" class="nav-link">Architecture</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="system-status-indicator" title="LangGraph Multi-Agent Cluster Online">
+          <span class="pulse-dot"></span>
+          <span class="status-label mono" id="agentCountDisplay">5 AGENTS LIVE</span>
+        </div>
+        <a href="#planner" class="nav-cta-btn">
+          <span class="sparkle-spark" aria-hidden="true">✦</span>
+          <span>Consult AI Companion</span>
+          <svg viewBox="0 0 20 20" fill="currentColor" class="btn-arrow" aria-hidden="true">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+
+    <!-- ── Hero Section ──────────────────────────────── -->
+    <section class="hero-section" aria-labelledby="heroTitle">
+      <div class="hero-container">
+        
+        <div class="hero-content">
+          <div class="hero-pill">
+            <span class="sparkle-icon" aria-hidden="true">✦</span>
+            <span>NEXT-GEN AUTONOMOUS TRAVEL ORCHESTRATOR</span>
+          </div>
+
+          <h1 class="hero-title" id="heroTitle">
+            Tell us where to wander.<br>
+            <span class="serif-italic">Meet your AI travel companion.</span>
+          </h1>
+
+          <p class="hero-description">
+            TripMate connects you to a coordinated squad of 5 specialized AI agents.
+            Real-time flight intelligence, handpicked stays, culinary trails, and human-in-the-loop precision.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#planner" class="hero-primary-btn">
+              <span class="btn-sparkle" aria-hidden="true">✦</span>
+              <span>Open AI Travel Cockpit</span>
+              <svg class="icon-arrow" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <a href="#discover" class="hero-secondary-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-compass" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                <path d="M2 12h20"/>
+              </svg>
+              <span>Explore Curated Journeys</span>
+            </a>
+          </div>
+
+          <!-- Hero AI Companion Live Teaser Bridge -->
+          <div class="hero-ai-companion-teaser" id="aiCompanionTeaser" onclick="scrollToCockpit()" role="button" tabindex="0" aria-label="Activate AI Travel Companion">
+            <div class="teaser-neural-avatar">
+              <div class="neural-core-pulse"></div>
+              <span class="neural-symbol" aria-hidden="true">✦</span>
+            </div>
+            <div class="teaser-body">
+              <div class="teaser-header">
+                <span class="teaser-title">AI Companion Active</span>
+                <span class="teaser-badge">STANDBY FOR BRIEF</span>
+              </div>
+              <p class="teaser-prompt-preview">
+                "Where are you dreaming of going? Click to summon the 5 specialist agents…"
+              </p>
+              <div class="teaser-tags">
+                <button type="button" class="teaser-tag" onclick="event.stopPropagation(); setPrompt('Plan a 7 days Japan trip from Colombo for two people with boutique hotels, matcha ceremonies and bullet trains under LKR 500,000.')">✨ Japan 7D Itinerary</button>
+                <button type="button" class="teaser-tag" onclick="event.stopPropagation(); setPrompt('Give me all available country flight information.')">✈️ Flight Radar</button>
+                <button type="button" class="teaser-tag" onclick="event.stopPropagation(); setPrompt('Plan a 5 days Dubai trip from Colombo with luxury desert safari, rooftop dining and boutique hotels.')">🌟 Dubai Luxury</button>
+              </div>
+            </div>
+            <div class="teaser-action-arrow">
+              <span>Launch</span>
+              <span class="arrow-sym" aria-hidden="true">↓</span>
+            </div>
+          </div>
+
+          <!-- Hero Metrics Bar -->
+          <div class="hero-metrics-bar">
+            <div class="metric-block">
+              <div class="metric-value"><span id="metricAgents">05</span></div>
+              <div class="metric-label">Specialist Agents</div>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-block">
+              <div class="metric-value">01</div>
+              <div class="metric-label">LangGraph Supervisor</div>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-block">
+              <div class="metric-value">HITL</div>
+              <div class="metric-label">Human Review Loop</div>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-block">
+              <div class="metric-value">MCP</div>
+              <div class="metric-label">Live Tool Sync</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Showcase -->
+        <div class="hero-visual-card">
+          <div class="visual-card-inner">
+            <img 
+              src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=1200&auto=format&fit=crop" 
+              alt="Kyoto Japan Heritage Temple and Nature" 
+              class="hero-img-main"
+              loading="eager"
+            />
+            <div class="hero-img-overlay"></div>
+
+            <!-- Floating Card: Flight Live -->
+            <div class="floating-badge badge-flight">
+              <div class="badge-icon flight-icon">✈</div>
+              <div class="badge-body">
+                <span class="badge-title">Direct Flight Synced</span>
+                <span class="badge-subtitle">CMB → HND · $640 RT</span>
+              </div>
+              <span class="badge-status-dot"></span>
+            </div>
+
+            <!-- Floating Card: Hotel Live -->
+            <div class="floating-badge badge-hotel">
+              <div class="badge-icon hotel-icon">✦</div>
+              <div class="badge-body">
+                <span class="badge-title">Aman Kyoto Sanctuary</span>
+                <span class="badge-subtitle">Curated Stay · 9.8 Rating</span>
+              </div>
+            </div>
+
+            <!-- Card Bottom Meta -->
+            <div class="card-bottom-info">
+              <div class="location-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-pin" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <span>Kyoto &amp; Tokyo, Japan</span>
+              </div>
+              <div class="itinerary-snippet">
+                <span class="snip-day">DAY 03</span>
+                <span class="snip-title">Arashiyama Bamboo &amp; Kaiseki Dinner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Tech Trust Ticker ──────────────────────────── -->
+    <section class="trust-ticker-section" id="liveStatus" aria-label="Architecture Ticker">
+      <div class="ticker-label">POWERED BY ENTERPRISE MULTI-AGENT ARCHITECTURE</div>
+      <div class="ticker-track">
+        <div class="ticker-item"><span class="tech-dot"></span>LANGGRAPH SUPERVISOR</div>
+        <div class="ticker-item"><span class="tech-dot"></span>MODEL CONTEXT PROTOCOL (MCP)</div>
+        <div class="ticker-item"><span class="tech-dot"></span>GUARDRAILS VALIDATION</div>
+        <div class="ticker-item"><span class="tech-dot"></span>GROQ LLAMA-3 ACCELERATION</div>
+        <div class="ticker-item"><span class="tech-dot"></span>AVIATIONSTACK FLIGHT API</div>
+        <div class="ticker-item"><span class="tech-dot"></span>TAVILY LIVE SEARCH</div>
+        <div class="ticker-item"><span class="tech-dot"></span>HUMAN-IN-THE-LOOP (HITL)</div>
+        <!-- Duplicate items for seamless continuous looping -->
+        <div class="ticker-item"><span class="tech-dot"></span>LANGGRAPH SUPERVISOR</div>
+        <div class="ticker-item"><span class="tech-dot"></span>MODEL CONTEXT PROTOCOL (MCP)</div>
+        <div class="ticker-item"><span class="tech-dot"></span>GUARDRAILS VALIDATION</div>
+      </div>
+    </section>
+
+    <!-- ── SIGNATURE: AI Travel Companion Command Cockpit ── -->
+    <section class="ai-cockpit-section" id="planner" aria-labelledby="cockpitHeading">
+      <div class="cockpit-glow-backdrop"></div>
+      
+      <div class="cockpit-wrapper">
+        
+        <!-- Top Bar -->
+        <div class="cockpit-top-bar">
+          <div class="cockpit-brand-pill">
+            <div class="neural-pulse-dot"></div>
+            <span class="cockpit-title-tag" id="cockpitHeading">TRIPMATE NEURAL TRAVEL COCKPIT</span>
+          </div>
+
+          <div class="cockpit-top-status">
+            <span class="status-pill" id="agentsReadyPill">
+              <span class="status-dot"></span>
+              <span class="status-text">5 Specialist Agents Ready</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Dual-Zone Cockpit Grid -->
+        <div class="cockpit-grid">
+          
+          <!-- LEFT PANEL: AI Agent Neural Cluster -->
+          <aside class="cockpit-agent-hub" aria-label="AI Fleet Status">
+            <div class="agent-hub-header">
+              <div class="companion-avatar-wrap">
+                <div class="avatar-ring-outer"></div>
+                <div class="avatar-ring-inner"></div>
+                <div class="avatar-icon">✦</div>
+              </div>
+              <div class="companion-meta">
+                <h3 class="companion-name">TripMate Core AI</h3>
+                <span class="companion-role">Supervisor &amp; Orchestrator</span>
+              </div>
+            </div>
+
+            <!-- Waveform Indicator -->
+            <div class="neural-waveform-box">
+              <div class="waveform-label">
+                <span>GRAPH SUPERVISOR ACTIVE</span>
+                <span class="waveform-sub">LangGraph Router</span>
+              </div>
+              <div class="sound-wave" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+
+            <!-- Specialist Agents Fleet -->
+            <div class="specialist-agents-list">
+              <div class="agent-card-item">
+                <div class="agent-icon-badge icon-flight">✈️</div>
+                <div class="agent-item-info">
+                  <span class="agent-name">Flight Intelligence</span>
+                  <span class="agent-tool">AviationStack MCP</span>
+                </div>
+                <span class="agent-status-live">ONLINE</span>
+              </div>
+
+              <div class="agent-card-item">
+                <div class="agent-icon-badge icon-hotel">🏨</div>
+                <div class="agent-item-info">
+                  <span class="agent-name">Boutique Stay Curator</span>
+                  <span class="agent-tool">Tavily Web Search</span>
+                </div>
+                <span class="agent-status-live">ONLINE</span>
+              </div>
+
+              <div class="agent-card-item">
+                <div class="agent-icon-badge icon-weather">🌦️</div>
+                <div class="agent-item-info">
+                  <span class="agent-name">Weather &amp; Seasonality</span>
+                  <span class="agent-tool">Climate Sensor</span>
+                </div>
+                <span class="agent-status-live">ONLINE</span>
+              </div>
+
+              <div class="agent-card-item">
+                <div class="agent-icon-badge icon-budget">💰</div>
+                <div class="agent-item-info">
+                  <span class="agent-name">Budget Optimizer</span>
+                  <span class="agent-tool">Currency Matrix</span>
+                </div>
+                <span class="agent-status-live">ONLINE</span>
+              </div>
+
+              <div class="agent-card-item">
+                <div class="agent-icon-badge icon-itinerary">🗓️</div>
+                <div class="agent-item-info">
+                  <span class="agent-name">Master Itinerary Composer</span>
+                  <span class="agent-tool">HITL Graph Node</span>
+                </div>
+                <span class="agent-status-live">ONLINE</span>
+              </div>
+            </div>
+
+            <!-- Mode Selector -->
+            <div class="cockpit-intent-modes">
+              <span class="modes-heading">ORCHESTRATION MODES</span>
+              <div class="intent-mode-pills">
+                <button type="button" class="intent-pill active" onclick="setGoalMode('full', this)">🌟 Complete Itinerary</button>
+                <button type="button" class="intent-pill" onclick="setGoalMode('flight', this)">✈️ Flight Search</button>
+                <button type="button" class="intent-pill" onclick="setGoalMode('hotel', this)">🏨 Boutique Stays</button>
+              </div>
+            </div>
+          </aside>
+
+          <!-- RIGHT PANEL: Interactive Conversational Studio & Composer -->
+          <div class="cockpit-composer-pane">
+            <div class="assistant-greeting-bubble">
+              <div class="bubble-sparkle" aria-hidden="true">✦</div>
+              <p class="bubble-text">
+                "Hello! Tell me about your destination, dates, budget or specific vibes, and our 5 specialist agents will craft your master dossier."
+              </p>
+            </div>
+
+            <!-- Parameter Tuners -->
+            <div class="interactive-tuners-grid">
+              
+              <div class="tuner-cell">
+                <label class="tuner-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="tuner-svg" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span>Duration</span>
+                </label>
+                <div class="tuner-options" id="durationSelector">
+                  <button type="button" class="tuner-pill" onclick="setDurationOption(3, this)">3D</button>
+                  <button type="button" class="tuner-pill active" onclick="setDurationOption(7, this)">7D</button>
+                  <button type="button" class="tuner-pill" onclick="setDurationOption(10, this)">10D</button>
+                  <button type="button" class="tuner-pill" onclick="setDurationOption(14, this)">14D</button>
+                </div>
+              </div>
+
+              <div class="tuner-cell">
+                <label class="tuner-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="tuner-svg" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <span>Vibe &amp; Style</span>
+                </label>
+                <div class="tuner-options" id="styleSelector">
+                  <button type="button" class="tuner-pill active" onclick="setStyleOption('Boutique & Cultural', this)">Boutique</button>
+                  <button type="button" class="tuner-pill" onclick="setStyleOption('Luxury & Relaxation', this)">Luxury</button>
+                  <button type="button" class="tuner-pill" onclick="setStyleOption('Culinary & Local Gems', this)">Foodie</button>
+                  <button type="button" class="tuner-pill" onclick="setStyleOption('Adventure & Nature', this)">Adventure</button>
+                </div>
+              </div>
+
+              <div class="tuner-cell">
+                <label class="tuner-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="tuner-svg" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  <span>Travelers</span>
+                </label>
+                <div class="tuner-options" id="travelerSelector">
+                  <button type="button" class="tuner-pill" onclick="setTravelerOption('Solo Explorer', this)">Solo</button>
+                  <button type="button" class="tuner-pill active" onclick="setTravelerOption('Couple (2 People)', this)">Couple</button>
+                  <button type="button" class="tuner-pill" onclick="setTravelerOption('Family (4 People)', this)">Family</button>
+                  <button type="button" class="tuner-pill" onclick="setTravelerOption('Friends Group', this)">Friends</button>
+                </div>
+              </div>
+
+              <div class="tuner-cell">
+                <label class="tuner-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="tuner-svg" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg>
+                  <span>Budget Tier</span>
+                </label>
+                <div class="tuner-options" id="budgetSelector">
+                  <button type="button" class="tuner-pill" onclick="setBudgetOption('Smart Budget', this)">Smart</button>
+                  <button type="button" class="tuner-pill active" onclick="setBudgetOption('Balanced Premium', this)">Balanced</button>
+                  <button type="button" class="tuner-pill" onclick="setBudgetOption('Ultra Luxury', this)">Luxury</button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Master Neural Textarea Console -->
+            <div class="neural-input-container">
+              <div class="console-top-strip">
+                <div class="console-tag">
+                  <span class="code-bracket">[</span>
+                  <span>TRAVEL BRIEF &amp; AGENT INSTRUCTIONS</span>
+                  <span class="code-bracket">]</span>
+                </div>
+                <span id="charCount" class="char-count mono">0 / 1200</span>
+              </div>
+
+              <div class="console-textarea-wrapper">
+                <textarea 
+                  id="userInput" 
+                  maxlength="1200" 
+                  rows="4"
+                  aria-label="Travel Brief Prompt"
+                  placeholder="e.g. Plan a 7 days Japan trip from Colombo for two people with flights, boutique hotels, culinary experiences and a balanced budget of LKR 500,000…"></textarea>
+              </div>
+
+              <div class="console-bottom-actions">
+                <div class="quick-preset-bar">
+                  <span class="quick-label mono">CURATED INSPIRATION:</span>
+                  <div class="preset-buttons">
+                    <button type="button" id="quickJapan" class="preset-btn"
+                      onclick="setPrompt('Plan a complete 7 days Japan trip from Colombo including flights, boutique hotels, food experiences and sightseeing under LKR 500,000.')">
+                      <span>Japan · 7D</span>
+                      <span class="arrow-tag">↗</span>
+                    </button>
+                    <button type="button" id="quickDubai" class="preset-btn"
+                      onclick="setPrompt('Plan a 5 days Dubai trip from Colombo with flights, hotels, sightseeing and a balanced budget.')">
+                      <span>Dubai · 5D</span>
+                      <span class="arrow-tag">↗</span>
+                    </button>
+                    <button type="button" id="quickThailand" class="preset-btn"
+                      onclick="setPrompt('Plan a 7 days Thailand trip from Colombo with budget hotels, local food and sightseeing.')">
+                      <span>Thailand · 7D</span>
+                      <span class="arrow-tag">↗</span>
+                    </button>
+                    <button type="button" id="quickFlight" class="preset-btn"
+                      onclick="setPrompt('Give me all available country flight information.')">
+                      <span>Flight Intelligence</span>
+                      <span class="arrow-tag">↗</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="shortcut-tag mono">
+                  <span>Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Execution Button -->
+            <div class="cockpit-submit-wrapper">
+              <button id="sendBtn" class="cockpit-generate-btn" onclick="sendMessage()">
+                <div class="btn-glow-aura"></div>
+                <span id="btnText" class="btn-inner-content">
+                  <span class="btn-icon-sparkle" aria-hidden="true">✦</span>
+                  <span class="btn-main-label">Deploy Travel Agents</span>
+                  <svg viewBox="0 0 20 20" fill="currentColor" class="btn-arrow-icon" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+                <div id="btnLoader" class="cockpit-loader-spinner hidden" aria-label="Loading"></div>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Generation Progress Visualizer ─────────────── -->
+    <div id="generationVisualizer" class="generation-visualizer hidden" aria-live="polite">
+      <div class="gen-card">
+        <div class="gen-header">
+          <div class="gen-pulse-icon" aria-hidden="true">✦</div>
+          <div class="gen-title-box">
+            <h3 class="gen-title">TripMate AI is orchestrating your voyage</h3>
+            <p class="gen-sub">Supervisor is routing queries to specialist agent workers in parallel</p>
+          </div>
+        </div>
+
+        <div class="gen-stages-list">
+          <div class="gen-stage-item active" id="stage-supervisor">
+            <span class="stage-status-icon">✓</span>
+            <span class="stage-name">1. Input Guardrails &amp; Intent Analysis</span>
+          </div>
+          <div class="gen-stage-item active" id="stage-flights">
+            <span class="stage-status-icon">◌</span>
+            <span class="stage-name">2. Flight Intelligence &amp; MCP Route Lookup</span>
+          </div>
+          <div class="gen-stage-item" id="stage-hotels">
+            <span class="stage-status-icon">⋯</span>
+            <span class="stage-name">3. Hotel &amp; Neighborhood Curator Selection</span>
+          </div>
+          <div class="gen-stage-item" id="stage-weather">
+            <span class="stage-status-icon">⋯</span>
+            <span class="stage-name">4. Weather &amp; Budget Feasibility Synthesis</span>
+          </div>
+          <div class="gen-stage-item" id="stage-itinerary">
+            <span class="stage-status-icon">⋯</span>
+            <span class="stage-name">5. Day-by-Day Master Itinerary Generation</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <main class="app-container">
+    <!-- ── Multi-Agent Orchestration & Reasoning Panel ─ -->
+    <section id="workflowSection" class="workflow-section hidden" aria-labelledby="workflowHeading">
+      <div class="workflow-card">
+        <div class="workflow-top">
+          <div class="workflow-heading-group">
+            <span class="section-indicator">STAGE 02 / ORCHESTRATION</span>
+            <h2 class="workflow-title" id="workflowHeading">Multi-Agent Intelligence Network</h2>
+          </div>
+          <div class="guardrail-wrapper">
+            <span id="guardrailBadge" class="guardrail-badge">Guardrail Passed</span>
+          </div>
+        </div>
 
-        <section class="hero-section">
-            <div class="badge">
-                ✈️ TripMate AI — A Multi-Agent Travel Planner with LangGraph & MCP
+        <div class="reasoning-box">
+          <div class="reasoning-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="reasoning-icon" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <span>SUPERVISOR ROUTING REASONING</span>
+          </div>
+          <p id="supervisorReasoning" class="supervisor-reasoning"></p>
+        </div>
+
+        <div class="agent-dispatch-area">
+          <span class="dispatch-title">DISPATCHED SPECIALIST AGENTS</span>
+          <div id="agentChips" class="agent-chips"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Destination Discovery Showcase ────────────── -->
+    <section class="discovery-section" id="discover" aria-labelledby="discoverHeading">
+      <div class="section-header-centered">
+        <span class="section-eyebrow">WORLD-CLASS ESCAPES</span>
+        <h2 class="section-heading" id="discoverHeading">Where will your curiosity take you?</h2>
+        <p class="section-subheading">Select a curated destination to automatically load an intelligent multi-day brief into your planner studio.</p>
+      </div>
+
+      <div class="destination-grid">
+        
+        <!-- Card 1: Japan -->
+        <article class="dest-card" onclick="selectDestination('Japan', 7, 'Colombo', 'boutique hotels, matcha ceremonies, bullet train journeys and street food under LKR 500,000')" tabindex="0">
+          <div class="dest-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=800&auto=format&fit=crop" alt="Tokyo Japan Cityscape and Fuji" loading="lazy">
+            <span class="dest-duration">07 DAYS</span>
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-info">
+            <div class="dest-top">
+              <span class="dest-region">EAST ASIA</span>
+              <span class="dest-agent-badge">Flights + Stays</span>
             </div>
-
-            <h1>
-                Plan Your Perfect Trip with AI
-            </h1>
-
-            <p>
-                Search flights, discover hotels, and generate a complete travel itinerary using a multi-agent LangGraph system.
-            </p>
-        </section>
-
-        <section class="planner-card">
-
-            <div class="card-header">
-                <div>
-                    <h2>Where do you want to go?</h2>
-                    <p>
-                        Example: Plan a complete 7 days Japan trip from Bangladesh under 2 lakhs.
-                    </p>
-                </div>
-
-                <div class="status-pill">
-                    <span class="status-dot"></span>
-                    Online
-                </div>
+            <h3 class="dest-title">Tokyo &amp; Kyoto, Japan</h3>
+            <p class="dest-desc">Ancient shrines, bullet trains, neon alleys, and Michelin-starred culinary discoveries.</p>
+            <div class="dest-footer">
+              <span class="dest-cta">Load into AI Cockpit →</span>
             </div>
+          </div>
+        </article>
 
-            <div class="input-area">
-                <textarea
-                    id="userInput"
-                    placeholder="Plan a complete 7 days Japan trip including flights, hotels and sightseeing under 2 lakhs..."
-                ></textarea>
-
-                <button id="sendBtn" onclick="sendMessage()">
-                    <span id="btnText">Generate Plan</span>
-                    <span id="btnLoader" class="loader hidden"></span>
-                </button>
+        <!-- Card 2: Dubai -->
+        <article class="dest-card" onclick="selectDestination('Dubai', 5, 'Colombo', 'luxury desert resorts, Burj Khalifa dining, skyline views and fine shopping')" tabindex="0">
+          <div class="dest-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=800&auto=format&fit=crop" alt="Dubai Marina Architecture" loading="lazy">
+            <span class="dest-duration">05 DAYS</span>
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-info">
+            <div class="dest-top">
+              <span class="dest-region">MIDDLE EAST</span>
+              <span class="dest-agent-badge">Luxury &amp; Leisure</span>
             </div>
-
-            <div class="quick-prompts">
-                <button onclick="setPrompt('Plan a complete 7 days Japan trip from Bangladesh including flights, hotels and sightseeing under 2 lakhs.')">
-                    Japan Trip
-                </button>
-
-                <button onclick="setPrompt('Plan a 5 days Dubai trip from Dhaka with flights, hotels and sightseeing.')">
-                    Dubai Trip
-                </button>
-
-                <button onclick="setPrompt('Plan a 7 days Thailand trip from Bangladesh with budget hotels and sightseeing.')">
-                    Thailand Trip
-                </button>
-
-                <button onclick="setPrompt('Give me all country flight info.')">
-                    Global Flights
-                </button>
+            <h3 class="dest-title">Dubai &amp; Desert Dunes</h3>
+            <p class="dest-desc">Futuristic skylines, private desert safari retreats, marina yachting, and fine dining.</p>
+            <div class="dest-footer">
+              <span class="dest-cta">Load into AI Cockpit →</span>
             </div>
+          </div>
+        </article>
 
-        </section>
-
-        <section id="resultSection" class="result-section hidden">
-
-            <div class="result-header">
-                <div>
-                    <h2>Your AI Travel Plan</h2>
-                    <p id="threadInfo">Thread ID: -</p>
-                </div>
-
-                <div class="result-actions">
-                    <button class="copy-btn" onclick="copyResult()">
-                        Copy
-                    </button>
-
-                    <button class="download-btn" onclick="downloadPDF()">
-                        Download PDF
-                    </button>
-                </div>
+        <!-- Card 3: Switzerland -->
+        <article class="dest-card" onclick="selectDestination('Switzerland', 8, 'London', 'Alpine trains, Zermatt Matterhorn views, fondue tasting and lakeside chalets')" tabindex="0">
+          <div class="dest-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?q=80&w=800&auto=format&fit=crop" alt="Swiss Alps Alpine Village" loading="lazy">
+            <span class="dest-duration">08 DAYS</span>
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-info">
+            <div class="dest-top">
+              <span class="dest-region">EUROPE</span>
+              <span class="dest-agent-badge">Alpine Panoramic</span>
             </div>
-
-            <div id="pdfContent" class="pdf-content">
-                <h1 class="pdf-title">AI Travel Plan</h1>
-                <div id="resultBox" class="result-box"></div>
+            <h3 class="dest-title">Swiss Alps &amp; Lucerne</h3>
+            <p class="dest-desc">Glacier express railways, pristine emerald lakes, Swiss chocolate workshops, and chalet serenity.</p>
+            <div class="dest-footer">
+              <span class="dest-cta">Load into AI Cockpit →</span>
             </div>
+          </div>
+        </article>
 
-        </section>
+        <!-- Card 4: Thailand -->
+        <article class="dest-card" onclick="selectDestination('Thailand', 7, 'Colombo', 'Bangkok rooftop dining, Chiang Mai mountain temples, and Phuket turquoise beaches')" tabindex="0">
+          <div class="dest-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=800&auto=format&fit=crop" alt="Phuket Thailand Coastal Waters" loading="lazy">
+            <span class="dest-duration">07 DAYS</span>
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-info">
+            <div class="dest-top">
+              <span class="dest-region">SOUTHEAST ASIA</span>
+              <span class="dest-agent-badge">Tropical &amp; Culture</span>
+            </div>
+            <h3 class="dest-title">Phuket &amp; Chiang Mai</h3>
+            <p class="dest-desc">Lush limestone islands, sacred hillside sanctuaries, night markets, and turquoise lagoons.</p>
+            <div class="dest-footer">
+              <span class="dest-cta">Load into AI Cockpit →</span>
+            </div>
+          </div>
+        </article>
 
-        <section id="errorBox" class="error-box hidden"></section>
+        <!-- Card 5: Amalfi Coast -->
+        <article class="dest-card" onclick="selectDestination('Italy (Amalfi & Rome)', 7, 'Dubai', 'Positano coastal drives, cliffside dining, Roman architecture and boutique villas')" tabindex="0">
+          <div class="dest-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=800&auto=format&fit=crop" alt="Amalfi Coast Positano Village" loading="lazy">
+            <span class="dest-duration">07 DAYS</span>
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-info">
+            <div class="dest-top">
+              <span class="dest-region">MEDITERRANEAN</span>
+              <span class="dest-agent-badge">Romance &amp; Coast</span>
+            </div>
+            <h3 class="dest-title">Amalfi Coast &amp; Rome</h3>
+            <p class="dest-desc">Pastel cliffside villas, lemon groves, sunset private charters, and historic Roman trattorias.</p>
+            <div class="dest-footer">
+              <span class="dest-cta">Load into AI Cockpit →</span>
+            </div>
+          </div>
+        </article>
 
-    </main>
+        <!-- Card 6: Sri Lanka -->
+        <article class="dest-card" onclick="selectDestination('Sri Lanka', 6, 'Colombo', 'Ella tea plantations, Sigiriya fortress, Galle Dutch fort, and luxury heritage bungalows')" tabindex="0">
+          <div class="dest-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?q=80&w=800&auto=format&fit=crop" alt="Ella Nine Arch Bridge Sri Lanka" loading="lazy">
+            <span class="dest-duration">06 DAYS</span>
+            <div class="dest-overlay"></div>
+          </div>
+          <div class="dest-info">
+            <div class="dest-top">
+              <span class="dest-region">SOUTH ASIA</span>
+              <span class="dest-agent-badge">Heritage &amp; Wildlife</span>
+            </div>
+            <h3 class="dest-title">Ella &amp; Ceylon Highlands</h3>
+            <p class="dest-desc">Misty Nine Arch Bridge train rides, spice gardens, tea country luxury bungalows, and coastal wildlife.</p>
+            <div class="dest-footer">
+              <span class="dest-cta">Load into AI Cockpit →</span>
+            </div>
+          </div>
+        </article>
 
-    <footer>
-        Built with FastAPI, LangGraph, Groq, PostgreSQL, Tavily and AviationStack
-    </footer>
+      </div>
+    </section>
 
-    <!-- Markdown Renderer -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- ── Final Itinerary Result Dossier ────────────── -->
+    <section id="resultSection" class="result-section hidden" aria-labelledby="resultTitle">
+      <div class="result-container-card">
+        
+        <div class="result-header-bar">
+          <div class="result-meta-info">
+            <div class="dossier-tag">
+              <span class="dossier-dot"></span>
+              <span class="dossier-text">CONFIRMED DOSSIER</span>
+            </div>
+            <h2 id="resultTitle" class="result-main-heading">Your Final AI Travel Plan</h2>
+            <div class="thread-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="thread-icon" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span id="threadInfo" class="thread-text">Thread ID: —</span>
+            </div>
+          </div>
 
-    <!-- PDF Download Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+          <div class="result-action-buttons">
+            <button type="button" class="action-btn copy-action-btn" id="copyBtn" onclick="copyResult()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="act-icon" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy Itinerary</span>
+            </button>
+            <button type="button" class="action-btn download-action-btn" id="downloadBtn" onclick="downloadPDF()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="act-icon" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Download PDF</span>
+            </button>
+          </div>
+        </div>
 
-    <!-- Your Custom JS -->
-    <script src="/static/script.js"></script>
+        <!-- Printable & Viewable PDF Area -->
+        <div id="pdfContent" class="pdf-content-wrapper">
+          <div class="pdf-print-header">
+            <div class="pdf-logo">TRIPMATE.AI — LUXURY TRAVEL DOSSIER</div>
+            <div class="pdf-stamp">VERIFIED AI MULTI-AGENT PLAN</div>
+          </div>
+          
+          <div id="resultBox" class="result-box-content"></div>
+        </div>
 
+      </div>
+    </section>
+
+    <!-- ── HITL Human-In-The-Loop Approval Section ──── -->
+    <section id="approvalSection" class="approval-section hidden" aria-labelledby="approvalHeading">
+      <div class="approval-modal-card">
+        
+        <div class="approval-badge-row">
+          <span class="approval-pill">
+            <span class="pill-dot"></span>
+            HUMAN-IN-THE-LOOP CHECKPOINT
+          </span>
+          <span class="checkpoint-step">STAGE 03 / REVIEW</span>
+        </div>
+
+        <div class="approval-header">
+          <h2 class="approval-title" id="approvalHeading">Review the Draft Journey Before Finalization</h2>
+          <p id="approvalRequest" class="approval-subtitle">
+            Our multi-agent system has generated a customized draft. Approve it to finalize bookings and timings, or provide specific feedback for automatic refinement.
+          </p>
+        </div>
+
+        <div class="approval-feedback-shell">
+          <label for="approvalFeedback" class="feedback-label">SPECIFIC REFINEMENTS OR PREFERENCES (OPTIONAL)</label>
+          <textarea 
+            id="approvalFeedback" 
+            class="feedback-input-box"
+            rows="3"
+            placeholder="e.g. Include a 4-star boutique hotel instead, add a half-day food tour in Ginza, or adjust the budget by 10%…"></textarea>
+        </div>
+
+        <div class="approval-button-actions">
+          <button type="button" id="approveBtn" class="btn-approve" onclick="submitApproval(true)">
+            <span>Approve &amp; Generate Final Plan</span>
+            <svg viewBox="0 0 20 20" fill="currentColor" class="icon-check" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <button type="button" id="reviseBtn" class="btn-revise" onclick="submitApproval(false)">
+            <span>Request Revision with Feedback</span>
+            <svg viewBox="0 0 20 20" fill="currentColor" class="icon-refresh" aria-hidden="true">
+              <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 17H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Error Feedback Box ────────────────────────── -->
+    <section id="errorBox" class="error-notification-box hidden" role="alert"></section>
+
+    <!-- ── How It Works Architecture Section ──────────── -->
+    <section class="how-it-works-section" id="howItWorks" aria-labelledby="archHeading">
+      <div class="section-header-centered">
+        <span class="section-eyebrow">INTELLIGENT ARCHITECTURE</span>
+        <h2 class="section-heading" id="archHeading">How TripMate Orchestrates Your Travel</h2>
+        <p class="section-subheading">A behind-the-scenes look at our LangGraph multi-agent graph architecture.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-icon-wrap">
+            <span class="step-number">01</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="step-svg" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="step-card-title">Guardrails &amp; Supervisor</h3>
+          <p class="step-card-desc">Your brief is validated for travel safety and parsed by the LangGraph supervisor into specialized sub-tasks.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon-wrap">
+            <span class="step-number">02</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="step-svg" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h3 class="step-card-title">MCP Tools &amp; Live Search</h3>
+          <p class="step-card-desc">Agents invoke AviationStack for flight metrics, Tavily search for hotel curated vibes, and weather APIs concurrently.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon-wrap">
+            <span class="step-number">03</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="step-svg" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+          </div>
+          <h3 class="step-card-title">HITL Review &amp; Synthesis</h3>
+          <p class="step-card-desc">You review the coordinated draft plan, adjust constraints, and our system compiles a day-by-day luxury dossier.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand-col">
+        <div class="footer-brand">
+          <span class="footer-logo-mark" aria-hidden="true">✦</span>
+          <span class="footer-brand-text">TRIPMATE<span class="brand-accent">.AI</span></span>
+        </div>
+        <p class="footer-tagline">
+          The next generation of autonomous luxury travel planning. Powered by LangGraph, Groq, MCP, and human curation.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <div class="footer-col-title">TECH STACK</div>
+        <ul class="footer-links">
+          <li><span>FastAPI &amp; Uvicorn</span></li>
+          <li><span>LangGraph &amp; Groq LLaMA-3</span></li>
+          <li><span>Model Context Protocol (MCP)</span></li>
+          <li><span>PostgreSQL Checkpointer</span></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <div class="footer-col-title">AGENT FLEET</div>
+        <ul class="footer-links">
+          <li><span>Supervisor Orchestrator</span></li>
+          <li><span>Flight Intelligence Agent</span></li>
+          <li><span>Hotel Curator Agent</span></li>
+          <li><span>Weather &amp; Itinerary Agent</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <span>© 2026 TRIPMATE AI. ALL RIGHTS RESERVED.</span>
+      <span>DESIGNED FOR LUXURY EXPEDITION DISCOVERY</span>
+    </div>
+  </footer>
+
+  <!-- External libraries: marked + html2pdf -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="/static/script.js"></script>
 </body>
+
 </html>
