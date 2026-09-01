@@ -21,6 +21,7 @@ TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
 AVIATION_STACK_API_KEY = os.getenv("AVIATIONSTACK_API_KEY")
 OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+NEON_API_KEY = os.getenv("NEON_API_KEY")
 
 
 # Automatically find the current project folder.
@@ -88,6 +89,14 @@ client = MultiServerMCPClient(
             ],
 
             "env": WEATHER_ENV
+        },
+
+        "neon": {
+            "transport": "streamable_http",
+            "url": "https://mcp.neon.tech/mcp",
+            "headers": {
+                "Authorization": f"Bearer {NEON_API_KEY}"
+            } if NEON_API_KEY else {}
         }
     }
 )
@@ -110,7 +119,8 @@ async def get_all_tools():
     for server_name in (
         "tavily",
         "aviationstack",
-        "weather"
+        "weather",
+        "neon"
     ):
         try:
             tools = await client.get_tools(
@@ -362,3 +372,57 @@ def extract_destination(query: str):
     response = llm.invoke(prompt)
 
     return response.content.strip()
+
+
+# ==========================================
+# Neon MCP tools
+# ==========================================
+
+neon_tools = {}
+
+
+async def initialize_neon_tools():
+    global neon_tools
+
+    if neon_tools:
+        return
+
+    tools = await client.get_tools(
+        server_name="neon"
+    )
+
+    neon_tools = {
+        tool.name: tool
+        for tool in tools
+    }
+
+    if not neon_tools:
+        raise RuntimeError(
+            "Neon MCP connected but returned no tools."
+        )
+
+
+async def neon_mcp_call(
+    tool_name: str,
+    tool_args: dict = None
+):
+    await initialize_neon_tools()
+
+    tool = neon_tools.get(tool_name)
+
+    if tool is None:
+        available_tools = ", ".join(
+            sorted(neon_tools.keys())
+        )
+
+        raise ValueError(
+            f"Neon tool '{tool_name}' was not found. "
+            f"Available tools: "
+            f"{available_tools or 'none'}"
+        )
+
+    result = await tool.ainvoke(
+        tool_args or {}
+    )
+
+    return result
